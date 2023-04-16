@@ -1,0 +1,17 @@
+{
+  "name": "scanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scan": "npx pa11y-ci --reporter=pa11y-ci-reporter-html --sitemap https://institutes.clir.org/sitemap.xml",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pa11y-ci": "^3.0.1",
+    "pa11y-ci-reporter-html": "^5.1.1"
+  }
+}
