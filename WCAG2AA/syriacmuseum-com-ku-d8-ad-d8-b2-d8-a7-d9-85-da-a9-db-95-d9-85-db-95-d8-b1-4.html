@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>
+		Pa11y results for "https://syriacmuseum.com/ku/%d8%ad%d8%b2%d8%a7%d9%85%da%a9%db%95%d9%85%db%95%d8%b1-4/"
+	</title>
+	<style>
+		html, body {
+			background-color: #ffffff;
+			color: rgb(51 51 51);
+			font-family: 'Segoe UI', Roboto, 'Noto Sans', Ubuntu, Cantarell,
+				'Helvetica Neue', sans-serif;
+			font-size: 16px;
+			line-height: 1.3rem;
+			margin: 0;
+			padding: 0;
+		}
+
+		main {
+			margin: 0 auto;
+			max-width: 900px;
+			padding: 1.25rem;
+		}
+
+		h1 {
+			font-size: 1.5rem;
+			line-height: 1.5rem;
+			margin: 0;
+			margin-bottom: 0.5rem;
+		}
+
+		h2, h3 {
+			font-size: 1.15rem;
+			font-weight: normal;
+			margin: 0;
+			padding-bottom: 0.5rem;
+		}
+
+		h3 { padding-bottom: 0; }
+
+		p { margin: 0; }
+
+		.filter {
+			display: inline-grid;
+			grid-template-columns: 8.5rem 1fr 1fr 1fr;
+			margin-top: 1rem;
+		}
+
+		.filter .label {
+			font-size: 1.15rem;
+			padding: 0.45rem 0;
+		}
+
+		.count {
+			border-radius: 0;
+			border-width: 0;
+			box-shadow: 0.1rem 0.25rem 0.5rem rgba(0 0 0 / 15%);
+			cursor: pointer;
+			display: inline-grid;
+			font-size: 1.15rem;
+			grid-template-columns: 0.35rem 1fr;
+			margin-right: 0.75rem;
+			min-width: 80px;
+		}
+
+		.count .body {
+			border-style: solid;
+			border-width: 1px 1px 1px 0;
+			overflow-x: hidden;
+			padding: 0.35rem 0.7rem;
+			text-align: center;
+		}
+
+		.count.hidden {
+			background-color: #f4f4f4;
+			color: rgb(51 51 51);
+		}
+
+		.count.hidden .left-bar { background-color: #808080; }
+
+		.count.hidden .body { border-color: #d4d4d4; }
+
+		.issues {
+			list-style: none;
+			margin: 0;
+			margin-top: 1.5rem;
+			padding-left: 0;
+		}
+
+		.issue {
+			border-radius: 0;
+			border-width: 0;
+			box-shadow: 0.1rem 0.25rem 0.5rem rgba(0 0 0 / 15%);
+			display: grid;
+			grid-template-columns: 0.5rem 1fr;
+			margin: 0;
+			margin-bottom: 1.5rem;
+			padding: 0;
+		}
+
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.issue .left-bar { background-color: #808080; }
+
+		.issue p:not(:last-child) { padding-bottom: 0.1rem; }
+
+		.issue.hidden { display: none; }
+
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.issue .body {
+ 			border-color: #bfbfbf;
+ 			border-style: solid;
+			border-width: 1px 1px 1px 0;
+			overflow-x: hidden;
+			padding: 0.5rem;
+			position: relative;
+		}
+
+		.issue .body h3 { padding-bottom: 0.25rem; }
+
+		.context, .selector {
+			font-family: monospace;
+			font-size: 0.95rem;
+			padding-top: 0.1rem;
+		}
+
+		.error {
+			background-color: #f8d7da;
+			color: rgb(103 25 31);
+		}
+
+		.warning {
+			background-color: #fff3cd;
+			color: rgb(84 64 3);
+		}
+
+		.notice {
+			background-color: #cfe2ff;
+			color: rgb(6 44 101);
+		}
+
+		.error a { color: #842029; }
+		.warning a { color: #664d03; }
+		.notice a { color: #074197; }
+
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.error .left-bar { background-color: #d53447; }
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.warning .left-bar { background-color: #c79500; }
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.notice .left-bar { background-color: #015cda; }
+
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.error .body { border-color: #f2bbc1; }
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.warning .body { border-color: #ffd761; }
+		/* stylelint-disable-next-line no-descending-specificity -- different parent elements */
+		.notice .body { border-color: #a9cefe; }
+
+		.clipboard-button {
+			background-color: rgba(51 51 51 / 10%);
+			border: 2px solid;
+			border-color: rgba(51 51 51 / 30%);
+			border-radius: 2px;
+			color: rgba(51 51 51 / 40%);
+			font-size: 0.8rem;
+			margin: 0;
+			opacity: 0;
+			padding: 5px 7px 4px;
+			position: absolute;
+			right: 7px;
+			top: 7px;
+			transition: 0.1s;
+			visibility: hidden;
+			z-index: 1;
+		}
+
+		.error .clipboard-button {
+			background-color: rgba(103 25 31 / 10%);
+			border-color: rgba(103 25 31 / 30%);
+			color: rgba(103 25 31 / 40%);
+		}
+
+		.warning .clipboard-button {
+			background-color: rgba(84 64 3 / 10%);
+			border-color: rgba(84 64 3 / 30%);
+			color: rgba(84 64 3 / 40%);
+		}
+
+		.notice .clipboard-button {
+			background-color: rgba(6 44 101 / 10%);
+			border-color: rgba(6 44 101 / 30%);
+			color: rgba(6 44 101 / 40%);
+		}
+
+		.clipboard-button > svg { fill: rgba(51 51 51 / 40%); }
+		.error .clipboard-button > svg { fill: rgba(103 25 31 / 40%); }
+		.warning .clipboard-button > svg { fill: rgba(84 64 3 / 40%); }
+		.notice .clipboard-button > svg { fill: rgba(6 44 101 / 40%); }
+
+		.clipboard-button:focus { outline: 0; }
+
+		.clipboard-button:hover {
+			background-color: rgba(51 51 51 / 20%);
+			border-color: rgba(51 51 51 / 70%);
+			color: rgba(51 51 51 / 80%);
+			cursor: pointer;
+		}
+
+		.error .clipboard-button:hover {
+			background-color: rgba(103 25 31 / 20%);
+			border-color: rgba(103 25 31 / 70%);
+			color: rgba(103 25 31 / 80%);
+		}
+
+		.warning .clipboard-button:hover {
+			background-color: rgba(84 64 3 / 20%);
+			border-color: rgba(84 64 3 / 70%);
+			color: rgba(84 64 3 / 80%);
+		}
+
+		.notice .clipboard-button:hover {
+			background-color: rgba(6 44 101 / 20%);
+			border-color: rgba(6 44 101 / 70%);
+			color: rgba(6 44 101 / 80%);
+		}
+
+		.clipboard-button:hover > svg { fill: rgba(51 51 51 / 80%); }
+		.error .clipboard-button:hover > svg { fill: rgba(103 25 31 / 80%); }
+		.warning .clipboard-button:hover > svg { fill: rgba(84 64 3 / 80%); }
+		.notice .clipboard-button:hover > svg { fill: rgba(6 44 101 / 80%); }
+
+		.issue .body:hover > .clipboard-button {
+			opacity: 1;
+			transition: 0.2s;
+			visibility: visible;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<h1>Pa11y results for "https://syriacmuseum.com/ku/%d8%ad%d8%b2%d8%a7%d9%85%da%a9%db%95%d9%85%db%95%d8%b1-4/"</h1>
+		<h2>Generated at: Mon Apr 17 2023 10:00:06 GMT-0400 (Eastern Daylight Time)</h2>
+		<h2>Runners (with issues): axe, htmlcs</h2>
+
+		<p class="filter">
+			<span class="label">Toggle by type</span>
+			<span class="count error" id="error-count" tabindex="0" role="button" aria-label="Toggle errors">
+				<span class="left-bar" aria-hidden="true"></span>
+				<span class="body">42 errors</span>
+			</span>
+			<span class="count warning" id="warning-count" tabindex="0" role="button" aria-label="Toggle warnings">
+				<span class="left-bar" aria-hidden="true"></span>
+				<span class="body">0 warnings</span>
+			</span>
+			<span class="count notice" id="notice-count" tabindex="0" role="button" aria-label="Toggle notices">
+				<span class="left-bar" aria-hidden="true"></span>
+				<span class="body">0 notices</span>
+			</span>
+		</p>
+		<ul class="issues">
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;div class&#x3D;&quot;entry-meta&quot;&gt;			&lt;span class&#x3D;&quot;comments-link&quot;&gt;...&lt;/div&gt;</p><p class="selector">(selector "#post-28271 &gt; div &gt; header &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%d8%ad%d8%b2%d8%a7%d9%85%da%a9%db%95%d9%85%db%95%d8%b1-4/#respond&quot;&gt;Leave a Comment&lt;/a&gt;</p><p class="selector">(selector "#post-28271 &gt; div &gt; header &gt; div &gt; span:nth-child(1) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;span class&#x3D;&quot;author-name&quot; itemprop&#x3D;&quot;name&quot;&gt;Syriac Museum&lt;/span&gt;</p><p class="selector">(selector "#post-28271 &gt; div &gt; header &gt; div &gt; span:nth-child(2) &gt; a &gt; span")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;span class&#x3D;&quot;published&quot; itemprop&#x3D;&quot;datePublished&quot;&gt; شوبات 23, 2023&lt;/span&gt;</p><p class="selector">(selector "#post-28271 &gt; div &gt; header &gt; div &gt; span:nth-child(3) &gt; span:nth-child(1)")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%db%8c%db%95%d9%84%db%95%da%af%da%a9%d8%ac%db%95/&quot; rel&#x3D;&quot;prev&quot;&gt;&lt;span class&#x3D;&quot;ast-right-arrow&quot;&gt;→...&lt;/a&gt;</p><p class="selector">(selector "#main &gt; nav &gt; div &gt; div:nth-child(1) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%d9%be%d8%a7%d8%b1%db%8c%d8%b2%db%95%d8%b1%db%8c-%da%a9%d8%a7%d8%aa%da%98%d9%85%db%8e%d8%b1%db%8c-%d8%a6%db%8c%d9%86%da%af%d9%84%db%8c%d8%b2%db%8c-%da%a9%db%86%d9%86/&quot; rel&#x3D;&quot;next&quot;&gt;Next بابەت &lt;span class&#x3D;&quot;ast-lef......</p><p class="selector">(selector "#main &gt; nav &gt; div &gt; div:nth-child(2) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;h2 class&#x3D;&quot;widget-title&quot;&gt;ناونیشان&lt;/h2&gt;</p><p class="selector">(selector "#text-8 &gt; h2")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: IDs used in ARIA and labels must be unique</h3><p>Ensures every id attribute value used in ARIA and in labels is unique</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/duplicate-id-aria?application&#x3D;axeAPI">axe: duplicate-id-aria</a></p><p class="context">&lt;input id&#x3D;&quot;email&quot; name&#x3D;&quot;email&quot; type&#x3D;&quot;text&quot; value&#x3D;&quot;&quot; placeholder&#x3D;&quot;Email*&quot; size&#x3D;&quot;30&quot; aria-required&#x3D;&quot;true&quot;&gt;</p><p class="selector">(selector "#email")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Frames must have an accessible name</h3><p>Ensures &lt;iframe&gt; and &lt;frame&gt; elements have an accessible name</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/frame-title?application&#x3D;axeAPI">axe: frame-title</a></p><p class="context">&lt;iframe src&#x3D;&quot;https://www.google.com/maps/embed?pb&#x3D;!1m14!1m8!1m3!1d12872.859582606532!2d43.988774!3d36.2342734!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40071f3547847db7%3A0x383bb5830a8f1785!2sSyriac%20Heritage%20Museum!5e0!3m2!1sen!2sse!4v1680698133906!5m2...</p><p class="selector">(selector "#block-7 &gt; p &gt; iframe")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Links must have discernible text</h3><p>Ensures links have discernible text</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/link-name?application&#x3D;axeAPI">axe: link-name</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/wp-content/uploads/2023/02/DSC070525.jpg&quot;&gt;&lt;img width&#x3D;&quot;1280&quot; height&#x3D;&quot;1280&quot;...&lt;/a&gt;</p><p class="selector">(selector "#gallery-1 &gt; figure &gt; div &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Links must have discernible text</h3><p>Ensures links have discernible text</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/link-name?application&#x3D;axeAPI">axe: link-name</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%da%a9%d8%b1%d8%a7%d8%b3%db%8c-%d8%a8%db%95%d8%b1%d8%aa%db%8c%da%b5%db%95%db%8c-%d9%be%db%8c%d8%a7%d9%88%d8%a7%d9%86/&quot;&gt;&lt;img width&#x3D;&quot;1024&quot; height&#x3D;&quot;1024&quot;...&lt;/a&gt;</p><p class="selector">(selector "#main &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; article:nth-child(1) &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Links must have discernible text</h3><p>Ensures links have discernible text</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/link-name?application&#x3D;axeAPI">axe: link-name</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%d8%b4%db%95%da%95%d9%88%d8%a7%da%b5%db%8c-%d9%be%db%8c%d8%a7%d9%88%d8%a7%d9%86%db%8c-%d8%a8%db%95%d8%b1%d8%aa%db%8c%da%b5%db%95/&quot;&gt;&lt;img width&#x3D;&quot;1024&quot; height&#x3D;&quot;1024&quot;...&lt;/a&gt;</p><p class="selector">(selector "#main &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; article:nth-child(2) &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Links must have discernible text</h3><p>Ensures links have discernible text</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/link-name?application&#x3D;axeAPI">axe: link-name</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%d8%ac%d8%a7%d9%86%d8%aa%d8%a7-%d9%87%db%95%d8%a8%da%a9%db%95-2/&quot;&gt;&lt;img width&#x3D;&quot;1024&quot; height&#x3D;&quot;1024&quot;...&lt;/a&gt;</p><p class="selector">(selector "#main &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; article:nth-child(3) &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;span class&#x3D;&quot;ast-right-arrow&quot;&gt;→&lt;/span&gt;</p><p class="selector">(selector "#main &gt; nav &gt; div &gt; div:nth-child(1) &gt; a &gt; span")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;span class&#x3D;&quot;ast-left-arrow&quot;&gt;←&lt;/span&gt;</p><p class="selector">(selector "#main &gt; nav &gt; div &gt; div:nth-child(2) &gt; a &gt; span")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Elements must have sufficient color contrast</h3><p>Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/color-contrast?application&#x3D;axeAPI">axe: color-contrast</a></p><p class="context">&lt;textarea id&#x3D;&quot;comment&quot; name&#x3D;&quot;comment&quot; placeholder&#x3D;&quot;Type here..&quot; cols&#x3D;&quot;45&quot; rows&#x3D;&quot;8&quot; aria-required&#x3D;&quot;true&quot;&gt;&lt;/textarea&gt;</p><p class="selector">(selector "#comment")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Critical</strong>: Frames should be tested with axe-core</h3><p>Ensures &lt;iframe&gt; and &lt;frame&gt; elements contain the axe-core script</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/frame-tested?application&#x3D;axeAPI">axe: frame-tested</a></p><p class="context">&lt;iframe src&#x3D;&quot;https://www.google.com/maps/embed?pb&#x3D;!1m14!1m8!1m3!1d12872.859582606532!2d43.988774!3d36.2342734!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40071f3547847db7%3A0x383bb5830a8f1785!2sSyriac%20Heritage%20Museum!5e0!3m2!1sen!2sse!4v1680698133906!5m2...</p><p class="selector">(selector "#block-7 &gt; p &gt; iframe")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error/Serious</strong>: Links must be distinguishable without relying on color</h3><p>Ensure links are distinguished from surrounding text in a way that does not rely on color</p><p><a href="https://dequeuniversity.com/rules/axe/4.6/link-in-text-block?application&#x3D;axeAPI">axe: link-in-text-block</a></p><p class="context">&lt;a title&#x3D;&quot;View all posts by Syriac Museum&quot; href&#x3D;&quot;https://syriacmuseum.com/ku/author/julianishaqi/&quot; rel&#x3D;&quot;author&quot; class&#x3D;&quot;url fn n&quot; itemprop&#x3D;&quot;url&quot;&gt;
+				&lt;span class&#x3D;&quot;author-name&quot; ...&lt;/a&gt;</p><p class="selector">(selector "#post-28271 &gt; div &gt; header &gt; div &gt; span:nth-child(2) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: Duplicate id attribute value &quot;primary-site-navigation&quot; found on the web page.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc4_1_1">htmlcs: WCAG2AA.Principle4.Guideline4_1.4_1_1.F77</a></p><p class="context">&lt;nav class&#x3D;&quot;site-navigation ast-flex-grow-1 navigation-accessibility site-header-focus-item&quot; id&#x3D;&quot;primary-site-navigation&quot; aria-label&#x3D;&quot;Site Navigation&quot; itemtype&#x3D;&quot;https://schema.org/SiteNavigationElement&quot; itemscope&#x3D;&quot;itemscope&quot;&gt;&lt;div class&#x3D;&quot;main-navigati...</p><p class="selector">(selector "#primary-site-navigation")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: Duplicate id attribute value &quot;ast-hf-menu-1&quot; found on the web page.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc4_1_1">htmlcs: WCAG2AA.Principle4.Guideline4_1.4_1_1.F77</a></p><p class="context">&lt;ul id&#x3D;&quot;ast-hf-menu-1&quot; class&#x3D;&quot;main-header-menu ast-menu-shadow ast-nav-menu ast-flex  submenu-with-border astra-menu-animation-slide-down  ast-menu-hover-style-overline  stack-on-mobile ast-mega-menu-enabled&quot;&gt;&lt;li class&#x3D;&quot;menu-item menu-item-...&lt;/ul&gt;</p><p class="selector">(selector "#ast-hf-menu-1")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change text colour to #008296.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;div class&#x3D;&quot;entry-meta&quot;&gt;			&lt;span class&#x3D;&quot;comments-link&quot;&gt;...&lt;/div&gt;</p><p class="selector">(selector "#post-28271 &gt; div &gt; header &gt; div")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change text colour to #008296.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%d8%ad%d8%b2%d8%a7%d9%85%da%a9%db%95%d9%85%db%95%d8%b1-4/#respond&quot;&gt;Leave a Comment&lt;/a&gt;</p><p class="selector">(selector "#post-28271 &gt; div &gt; header &gt; div &gt; span:nth-child(1) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change text colour to #008296.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;span class&#x3D;&quot;author-name&quot; itemprop&#x3D;&quot;name&quot;&gt;Syriac Museum&lt;/span&gt;</p><p class="selector">(selector "#post-28271 &gt; div &gt; header &gt; div &gt; span:nth-child(2) &gt; a &gt; span")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change text colour to #008296.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;span class&#x3D;&quot;published&quot; itemprop&#x3D;&quot;datePublished&quot;&gt; شوبات 23, 2023&lt;/span&gt;</p><p class="selector">(selector "#post-28271 &gt; div &gt; header &gt; div &gt; span:nth-child(3) &gt; span:nth-child(1)")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: Img element is the only content of the link, but is missing alt text. The alt text should describe the purpose of the link.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_1_1">htmlcs: WCAG2AA.Principle1.Guideline1_1.1_1_1.H30.2</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/wp-content/uploads/2023/02/DSC070525.jpg&quot;&gt;&lt;img width&#x3D;&quot;1280&quot; height&#x3D;&quot;1280&quot;...&lt;/a&gt;</p><p class="selector">(selector "#gallery-1 &gt; figure &gt; div &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.08:1. Recommendation:  change text colour to #002d34.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%db%8c%db%95%d9%84%db%95%da%af%da%a9%d8%ac%db%95/&quot; rel&#x3D;&quot;prev&quot;&gt;&lt;span class&#x3D;&quot;ast-right-arrow&quot;&gt;→...&lt;/a&gt;</p><p class="selector">(selector "#main &gt; nav &gt; div &gt; div:nth-child(1) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.08:1. Recommendation:  change text colour to #002d34.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;span class&#x3D;&quot;ast-right-arrow&quot;&gt;→&lt;/span&gt;</p><p class="selector">(selector "#main &gt; nav &gt; div &gt; div:nth-child(1) &gt; a &gt; span")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.08:1. Recommendation:  change text colour to #002d34.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%d9%be%d8%a7%d8%b1%db%8c%d8%b2%db%95%d8%b1%db%8c-%da%a9%d8%a7%d8%aa%da%98%d9%85%db%8e%d8%b1%db%8c-%d8%a6%db%8c%d9%86%da%af%d9%84%db%8c%d8%b2%db%8c-%da%a9%db%86%d9%86/&quot; rel&#x3D;&quot;next&quot;&gt;Next بابەت &lt;span class&#x3D;&quot;ast-lef......</p><p class="selector">(selector "#main &gt; nav &gt; div &gt; div:nth-child(2) &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.08:1. Recommendation:  change text colour to #002d34.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;span class&#x3D;&quot;ast-left-arrow&quot;&gt;←&lt;/span&gt;</p><p class="selector">(selector "#main &gt; nav &gt; div &gt; div:nth-child(2) &gt; a &gt; span")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: Img element is the only content of the link, but is missing alt text. The alt text should describe the purpose of the link.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_1_1">htmlcs: WCAG2AA.Principle1.Guideline1_1.1_1_1.H30.2</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%da%a9%d8%b1%d8%a7%d8%b3%db%8c-%d8%a8%db%95%d8%b1%d8%aa%db%8c%da%b5%db%95%db%8c-%d9%be%db%8c%d8%a7%d9%88%d8%a7%d9%86/&quot;&gt;&lt;img width&#x3D;&quot;1024&quot; height&#x3D;&quot;1024&quot;...&lt;/a&gt;</p><p class="selector">(selector "#main &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; article:nth-child(1) &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change text colour to #008296.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/explore/%d9%be%db%86%d8%b4%d8%a7%d9%83%db%8c-%d9%85%db%8c%d9%84%d9%84%db%8c/&quot; rel&#x3D;&quot;category tag&quot;&gt;پۆشاكی میللی&lt;/a&gt;</p><p class="selector">(selector "#main &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; article:nth-child(1) &gt; div &gt; div &gt; header &gt; div &gt; span &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: Img element is the only content of the link, but is missing alt text. The alt text should describe the purpose of the link.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_1_1">htmlcs: WCAG2AA.Principle1.Guideline1_1.1_1_1.H30.2</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%d8%b4%db%95%da%95%d9%88%d8%a7%da%b5%db%8c-%d9%be%db%8c%d8%a7%d9%88%d8%a7%d9%86%db%8c-%d8%a8%db%95%d8%b1%d8%aa%db%8c%da%b5%db%95/&quot;&gt;&lt;img width&#x3D;&quot;1024&quot; height&#x3D;&quot;1024&quot;...&lt;/a&gt;</p><p class="selector">(selector "#main &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; article:nth-child(2) &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change text colour to #008296.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/explore/%d9%be%db%86%d8%b4%d8%a7%d9%83%db%8c-%d9%85%db%8c%d9%84%d9%84%db%8c/&quot; rel&#x3D;&quot;category tag&quot;&gt;پۆشاكی میللی&lt;/a&gt;</p><p class="selector">(selector "#main &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; article:nth-child(2) &gt; div &gt; div &gt; header &gt; div &gt; span &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: Img element is the only content of the link, but is missing alt text. The alt text should describe the purpose of the link.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_1_1">htmlcs: WCAG2AA.Principle1.Guideline1_1.1_1_1.H30.2</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/%d8%ac%d8%a7%d9%86%d8%aa%d8%a7-%d9%87%db%95%d8%a8%da%a9%db%95-2/&quot;&gt;&lt;img width&#x3D;&quot;1024&quot; height&#x3D;&quot;1024&quot;...&lt;/a&gt;</p><p class="selector">(selector "#main &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; article:nth-child(3) &gt; div &gt; div &gt; div:nth-child(1) &gt; div &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.23:1. Recommendation:  change text colour to #008296.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;a href&#x3D;&quot;https://syriacmuseum.com/ku/explore/%d9%be%db%86%d8%b4%d8%a7%d9%83%db%8c-%d9%85%db%8c%d9%84%d9%84%db%8c/&quot; rel&#x3D;&quot;category tag&quot;&gt;پۆشاكی میللی&lt;/a&gt;</p><p class="selector">(selector "#main &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; article:nth-child(3) &gt; div &gt; div &gt; header &gt; div &gt; span &gt; a")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This fieldset element does not have a name available to an accessibility API. Valid names are: legend element, aria-label undefined, aria-labelledby undefined.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc4_1_2">htmlcs: WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Fieldset.Name</a></p><p class="context">&lt;fieldset class&#x3D;&quot;comment-form-comment&quot;&gt;&lt;legend class&#x3D;&quot;comment-form-leg...&lt;/fieldset&gt;</p><p class="selector">(selector "#ast-commentform &gt; div:nth-child(2) &gt; fieldset")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.06:1. Recommendation:  change text colour to #f9fbff.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;h2 class&#x3D;&quot;widget-title&quot;&gt;رێگەکانی پەیوەندی کردن&lt;/h2&gt;</p><p class="selector">(selector "#text-5 &gt; h2")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.06:1. Recommendation:  change text colour to #f9fbff.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;h2 class&#x3D;&quot;widget-title&quot;&gt;فۆڵۆومان بکەن&lt;/h2&gt;</p><p class="selector">(selector "#text-11 &gt; h2")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: Duplicate id attribute value &quot;email&quot; found on the web page.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc4_1_1">htmlcs: WCAG2AA.Principle4.Guideline4_1.4_1_1.F77</a></p><p class="context">&lt;title id&#x3D;&quot;email&quot;&gt; Email &lt;/title&gt;</p><p class="selector">(selector "#email")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.06:1. Recommendation:  change text colour to #f9fbff.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;h2 class&#x3D;&quot;widget-title&quot;&gt;ناونیشان&lt;/h2&gt;</p><p class="selector">(selector "#text-8 &gt; h2")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: Iframe element requires a non-empty title attribute that identifies the frame.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc2_4_1">htmlcs: WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1</a></p><p class="context">&lt;iframe src&#x3D;&quot;https://www.google.com/maps/embed?pb&#x3D;!1m14!1m8!1m3!1d12872.859582606532!2d43.988774!3d36.2342734!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40071f3547847db7%3A0x383bb5830a8f1785!2sSyriac%20Heritage%20Museum!5e0!3m2!1sen!2sse!4v1680698133906!5m2...</p><p class="selector">(selector "#block-7 &gt; p &gt; iframe")</p></div>
+			</li>
+			<li class="issue error">
+				<div class="left-bar" aria-hidden="true"></div>
+				<div class="body">
+					<h3><strong>Error</strong>: This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.06:1. Recommendation:  change text colour to #f9fbff.</h3><p><a href="https://squizlabs.github.io/HTML_CodeSniffer/Standards/WCAG2/#sc1_4_3">htmlcs: WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail</a></p><p class="context">&lt;h2 class&#x3D;&quot;widget-title&quot;&gt;کاتەکانی کارکردن&lt;/h2&gt;</p><p class="selector">(selector "#text-16 &gt; h2")</p></div>
+			</li>
+		</ul>
+	</main>
+	<script>
+		const toggleIssues = (btn, pageQuery) => {
+			const className = 'hidden';
+			document.getElementById(btn).classList.toggle(className);
+			document.querySelectorAll(pageQuery).forEach((page) => {
+				page.classList.toggle(className);
+			});
+		};
+
+		const errorCountFilter = document.getElementById('error-count');
+		errorCountFilter.addEventListener('click', () =>
+			toggleIssues('error-count', '.issues .issue.error')
+		);
+		errorCountFilter.addEventListener('keydown', (event) =>
+			event.key === "Enter" && toggleIssues('error-count', '.issues .issue.error')
+		);
+
+		const warningCountButton = document.getElementById('warning-count');
+		warningCountButton.addEventListener('click', () =>
+			toggleIssues('warning-count', '.issues .issue.warning')
+		);
+		warningCountButton.addEventListener('keydown', (event) =>
+			event.key === "Enter" && toggleIssues('warning-count', '.issues .issue.warning')
+		);
+
+		const noticeCountButton = document.getElementById('notice-count');
+		noticeCountButton.addEventListener('click', () =>
+			toggleIssues('notice-count', '.issues .issue.notice')
+		);
+		noticeCountButton.addEventListener('keydown', (event) =>
+			event.key === "Enter" && toggleIssues('notice-count', '.issues .issue.notice')
+		);
+	</script>
+	<script>
+		const svgCopy = '<svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg>';
+		const svgCheck = '<svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"><path fill-rule="evenodd" fill="rgb(63, 185, 80)" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>';
+
+		if (navigator && navigator.clipboard) {
+			document.querySelectorAll(".issue .body .selector").forEach((selectorNode) => {
+				const selector = selectorNode.innerText
+					.match(/\(selector "(?<selector>.+)"\)/).groups.selector;
+
+				const button = document.createElement("button");
+				button.className = "clipboard-button";
+				button.type = "button";
+				button.title = "Copy selector";
+				button.innerHTML = svgCopy;
+				button.addEventListener("click", () => {
+					navigator.clipboard.writeText(selector)
+						.then(() => {
+							button.blur();
+							button.innerHTML = svgCheck;
+							setTimeout(() => (button.innerHTML = svgCopy), 2000);
+						},
+						(error) => (button.innerHTML = "Error")
+					);
+				});
+
+				selectorNode.parentNode.insertBefore(button, selectorNode);
+			});
+		};
+	</script>
+</body>
+
+</html>
