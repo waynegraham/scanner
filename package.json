@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "scan": "npx pa11y-ci --reporter=pa11y-ci-reporter-html --sitemap https://institutes.clir.org/sitemap.xml",
+    "scan": "npx pa11y-ci --reporter=pa11y-ci-reporter-html --sitemap https://syriacmuseum.com/sitemap_index.xml",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

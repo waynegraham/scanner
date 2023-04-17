@@ -1,9 +1,10 @@
 {
     "defaults": {
-        "concurrency": 4,
-        "standard": "WCAG2A",
+        "concurrency": 10,
+        "standard": "WCAG2AA",
         "runners": [
-            "axe"
+            "axe",
+            "htmlcs"
         ]
     }
 }
