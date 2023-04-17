@@ -1,6 +1,6 @@
 # A Simple Accessability Scanner Wrapper
 
-This is a simple wrapper for running [pall-ci](https://github.com/pa11y/pa11y-ci) on a set of web pages to generate an accessability report. 
+This is a simple wrapper for running [pa11y-ci](https://github.com/pa11y/pa11y-ci) on a set of web pages to generate an accessability report. 
 
 ## Installation
 
